@@ -14,12 +14,12 @@ const questions = [
             },
             {
                 type: "input",
-                message: "What command should be run to install dependencies?",
+                message: "What command should be used to install dependencies?",
                 name: "dependencies"
             },
             {
                 type: "input",
-                message: "What command should be run to run tests?",
+                message: "What command should be used to run tests?",
                 name: "test"
             },
             {
@@ -54,7 +54,7 @@ const questions = [
 inquirer
 .prompt(questions)
 .then(function (answers) {
-        fs.writeFile("READMEexample.md", "# " + answers.projectname + "\n" +
+        fs.writeFile("READMEexample1.md", "# " + answers.projectname + "\n" +
         "![LICENSE BADGE](https://img.shields.io/badge/LICENSE-" + answers.license +"-BLUE)" + "\n" +
         "## Description" + "\n" +
         answers.description + "\n" +
