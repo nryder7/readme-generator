@@ -35,7 +35,7 @@ const questions = [
             {
                 type: "list",
                 message: "What kind of license should your project have?",
-                choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"],
+                choices: ["MIT", "APACHE_2.0", "GPL_3.0", "BSD_3", "None"],
                 name: "license"
             },
             {
@@ -51,9 +51,11 @@ const questions = [
         ];
 
 
-inquirer.prompt(questions)
+inquirer
+.prompt(questions)
 .then(function (answers) {
-        fs.writeFile("README.md", "# " + answers.projectname + "\n" +
+        fs.writeFile("READMEexample.md", "# " + answers.projectname + "\n" +
+        "![LICENSE BADGE](https://img.shields.io/badge/LICENSE-" + answers.license +"-BLUE)" + "\n" +
         "## Description" + "\n" +
         answers.description + "\n" +
         "## Table of Contents \n" +
@@ -64,18 +66,24 @@ inquirer.prompt(questions)
         "* [Contributing](#contributing)" + "\n" +
         "* [Questions](#questions)" + "\n" +
         "## Installation \n" +
+        "Run the following command to install dependencies:" + "\n" +
+        "```" + "\n" +
         answers.dependencies + "\n" +
+        "```"+ "\n" +
         "## Tests \n" +
+        "Run the following command for testing:" + "\n" +
+        "```" + "\n" +
         answers.test + "\n" +
+        "```" + "\n" +
         "## Usage \n" +
         answers.usage + "\n" +
         "## Contributing \n" +
         answers.contributing + "\n" +
-        "## License \n" +
-        answers.license + "\n" +
         "## Questions \n" +
-        "Please direct your questions to " +
-        answers.username + " by sending an email to " + answers.email, 
+        "Please send any questions to " + answers.email  + ". " +
+        "You can find more of my work at " + "[" + answers.username + "](https://github.com/" + answers.username + ")" + "\n" +
+        "## License \n" +
+        answers.license + "\n",
         function (err) {
         if (err) {
             return console.log(err);
